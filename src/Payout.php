@@ -2,7 +2,7 @@
 
 namespace Moneroo;
 
-class Payout extends Moneroo
+final class Payout extends Moneroo
 {
     public function init(array $data)
     {

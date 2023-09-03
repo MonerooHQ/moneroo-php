@@ -4,6 +4,6 @@ namespace Moneroo\Exceptions;
 
 use RuntimeException;
 
-class NotAcceptableException extends RuntimeException
+final class NotAcceptableException extends RuntimeException
 {
 }

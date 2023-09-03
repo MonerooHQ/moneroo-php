@@ -4,6 +4,6 @@ namespace Moneroo\Exceptions;
 
 use RuntimeException;
 
-class BadRequestException extends RuntimeException
+final class BadRequestException extends RuntimeException
 {
 }

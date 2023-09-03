@@ -4,6 +4,6 @@ namespace Moneroo\Exceptions;
 
 use RuntimeException;
 
-class ServiceUnavailableException extends RuntimeException
+final class ServiceUnavailableException extends RuntimeException
 {
 }

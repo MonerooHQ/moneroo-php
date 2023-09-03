@@ -2,7 +2,7 @@
 
 namespace Moneroo\Configs;
 
-class Config
+final class Config
 {
     public const VERSION = '1.0.0';
 

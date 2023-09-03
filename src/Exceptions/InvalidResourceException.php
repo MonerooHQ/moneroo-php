@@ -4,6 +4,6 @@ namespace Moneroo\Exceptions;
 
 use RuntimeException;
 
-class InvalidResourceException extends RuntimeException
+final class InvalidResourceException extends RuntimeException
 {
 }
