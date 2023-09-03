@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://moneroo.io" title="Moneroo - Payment stack for Africa">
-    <img src="/art/cover.svg" alt="Moneroo website">
+    <img src="/art/cover.png" alt="Moneroo website">
 </a>
 
 # Moneroo PHP SDK
