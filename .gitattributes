@@ -18,6 +18,7 @@ CHANGELOG.md export-ignore
 /.editorconfig      export-ignore
 /.php_cs.dist.php   export-ignore
 /psalm.xml          export-ignore
+/art                export-ignore
 /psalm.xml.dist     export-ignore
 /testbench.yaml     export-ignore
 /UPGRADING.md       export-ignore
