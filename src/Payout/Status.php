@@ -4,7 +4,6 @@ namespace Moneroo\Payout;
 
 final class Status
 {
-
     /**
      * The payout has been initiated.
      * This is transactional state and will change.
