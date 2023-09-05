@@ -9,10 +9,19 @@ class Moneroo
 {
     use Traits\Request;
 
+    /**
+     *  API public key.
+     */
     public string $publicKey;
 
+    /**
+     *  API secret key.
+     */
     public string $secretKey;
 
+    /**
+     *  API base URL.
+     */
     public string $baseUrl;
 
     public function __construct(

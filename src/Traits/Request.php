@@ -19,6 +19,14 @@ use Moneroo\Exceptions\UnauthorizedException;
 
 trait Request
 {
+    /**
+     * Send request to the API.
+     *
+     * @param string                $method   - The HTTP method to use (GET, POST, PUT, PATCH, DELETE)
+     * @param array                 $data     - The data to send
+     * @param string                $endpoint - The API endpoint
+     * @param GuzzleHttpClient|null $client   - The Guzzle HTTP client to use
+     */
     public function sendRequest(string $method, array $data, string $endpoint, GuzzleHttpClient $client = null)
     {
         $client = $client ?: new GuzzleHttpClient([
@@ -54,6 +62,9 @@ trait Request
         return json_decode($response->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR);
     }
 
+    /**
+     * Process the response.
+     */
     private function processResponse(Response $response, object $responsePayload)
     {
         switch ($response->getStatusCode()) {
