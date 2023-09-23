@@ -24,7 +24,7 @@
     }
   ],
   "require": {
-    "php": "^7.4",
+    "php": "^7.4 || ^8.0",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.7"
   },
@@ -34,7 +34,7 @@
     "phpstan/phpstan-phpunit": "^1.3",
     "phpunit/phpunit": "^9.6",
     "roave/security-advisories": "dev-latest",
-    "spatie/ray": "^1.32",
+    "spatie/ray": "^1.39",
     "fakerphp/faker": "^1.23"
   },
   "autoload": {
