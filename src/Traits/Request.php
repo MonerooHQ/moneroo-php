@@ -29,8 +29,12 @@ trait Request
      */
     public function sendRequest(string $method, array $data, string $endpoint, GuzzleHttpClient $client = null)
     {
+        $baseUrl = (substr($this->baseUrl, -1) === '/')
+            ? $this->baseUrl
+            : $this->baseUrl . '/';
+
         $client = $client ?: new GuzzleHttpClient([
-            'base_uri' => $this->baseUrl,
+            'base_uri' => $baseUrl,
             'timeout'  => Config::TIMEOUT,
             'headers'  => [
                 'User-Agent'    => 'Moneroo PHP SDK v' . Config::VERSION,

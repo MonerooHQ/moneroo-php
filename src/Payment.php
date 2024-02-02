@@ -25,7 +25,7 @@ final class Payment extends Moneroo
      */
     public function verify(string $paymentTransactionId)
     {
-        return $this->sendRequest('get', [], 'payments/' . $paymentTransactionId . '/verify');
+        return $this->sendRequest('get', [], "payments/{$paymentTransactionId}/verify");
     }
 
     /**
@@ -37,7 +37,7 @@ final class Payment extends Moneroo
      */
     public function get(string $paymentTransactionId)
     {
-        return $this->sendRequest('get', [], 'payments/' . $paymentTransactionId);
+        return $this->sendRequest('get', [], "payments/{$paymentTransactionId}");
     }
 
     /**
@@ -49,6 +49,6 @@ final class Payment extends Moneroo
      */
     public function markAsProcessed(string $paymentTransactionId)
     {
-        return $this->sendRequest('post', [], 'payments/' . $paymentTransactionId . '/process');
+        return $this->sendRequest('post', [], "payments/{$paymentTransactionId}/process");
     }
 }
