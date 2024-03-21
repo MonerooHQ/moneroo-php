@@ -8,5 +8,5 @@ final class Config
 
     public const BASE_URL = 'https://api.moneroo.io/v1';
 
-    public const TIMEOUT = 5;
+    public const TIMEOUT = 30;
 }

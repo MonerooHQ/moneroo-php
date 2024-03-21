@@ -6,21 +6,21 @@ final class Status
 {
     /**
      * The payout has been initiated.
-     * This is transactional state and will change.
+     * This is a transactional state and will change.
      */
     public const INITIATED = 'initiated';
 
     /**
      * The payout is pending, waiting for confirmation from PSP.
      *
-     * This is transactional state and will change.
+     * This is a transactional state and will change.
      */
     public const PENDING = 'pending';
 
     /**
      * The payout has failed.
      *
-     * This is final state.
+     * This is a final state.
      */
     public const FAILED = 'failed';
 }

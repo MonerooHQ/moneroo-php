@@ -18,12 +18,10 @@ class MonerooTest extends TestCase
      */
     public function it_should_construct_a_moneroo_object(): void
     {
-        $publicKey = 'public-key';
         $secretKey = 'secret-key';
 
-        $moneroo = new Moneroo($publicKey, $secretKey, false);
+        $moneroo = new Moneroo($secretKey, false);
 
-        $this->assertEquals($publicKey, $moneroo->publicKey);
         $this->assertEquals($secretKey, $moneroo->secretKey);
         $this->assertEquals(Config::BASE_URL, $moneroo->baseUrl);
     }
@@ -35,26 +33,12 @@ class MonerooTest extends TestCase
      */
     public function it_should_construct_a_moneroo_object_in_dev_mode_with_custom_base_url(): void
     {
-        $publicKey = 'public-key';
         $secretKey = 'secret-key';
         $customUrl = 'httpd://custom-url.dev';
 
-        $moneroo = new Moneroo($publicKey, $secretKey, true, $customUrl);
+        $moneroo = new Moneroo($secretKey, true, $customUrl);
 
         $this->assertEquals($customUrl, $moneroo->baseUrl);
-    }
-
-    /**
-     * It should throw an exception for empty public key.
-     *
-     * @test
-     */
-    public function it_should_thrown_an_exception_for_empty_public_key(): void
-    {
-        $this->expectException(InvalidPayloadException::class);
-        $this->expectExceptionMessage('Public key is not set or not a string.');
-
-        new Moneroo('', 'secret-key');
     }
 
     /**
@@ -67,7 +51,7 @@ class MonerooTest extends TestCase
         $this->expectException(InvalidPayloadException::class);
         $this->expectExceptionMessage('Secret key is not set or not a string.');
 
-        new Moneroo('public-key', '');
+        new Moneroo('', '');
     }
 
     /**
