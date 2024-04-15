@@ -44,7 +44,7 @@ composer require moneroo/moneroo-php
 ```
 
 ## Documentation
-See the php SDK [documentation](https://docs.moneroo.io/sdk/php).
+See the php SDK [documentation](https://docs.moneroo.io/sdks/php).
 
 ## Development
 
