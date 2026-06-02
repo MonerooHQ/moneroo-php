@@ -2,6 +2,63 @@
 
 Guidance for Claude Code and other AI agents working in this repository.
 
+## Project overview
+
+moneroo-php is the official PHP SDK for the Moneroo payment API, enabling PHP applications to initialize and verify payment collections and payouts across African mobile money providers. It is distributed as a Composer package (`moneroo/moneroo-php`) and targets PHP 7.4+. It has no framework dependency and can be used in plain PHP, Laravel, or any other PHP project.
+
+## Tech stack
+
+- PHP 7.4, 8.0, 8.1, 8.2 (all supported)
+- GuzzleHttp/Guzzle ^7.7 (HTTP client)
+- PHPUnit ^9.6 (testing)
+- PHPStan level 4 (static analysis)
+- axazara/php-cs (php-cs-fixer wrapper, AxaZara house style)
+- fakerphp/faker ^1.23 (test data generation)
+
+## Getting started
+
+```bash
+# Install production dependency
+composer require moneroo/moneroo-php
+
+# For development / contributing
+composer install
+```
+
+No `.env` file is required. Pass your Moneroo secret key directly when instantiating the SDK.
+
+## Common commands
+
+| Task | Command |
+|---|---|
+| Test | `composer test` |
+| Lint (dry-run) | `composer sniff` |
+| Format | `composer format` |
+| Static analysis | `composer analyse` |
+| Unused deps scan | `composer unused` |
+
+## Architecture
+
+The SDK is a small, framework-agnostic library with no config files or service providers.
+
+- `src/Moneroo.php` — base class; accepts `$secretKey`, optional `$devMode` flag and `$baseUrl` override; uses the `Request` trait for HTTP communication.
+- `src/Payment.php` — extends `Moneroo`; exposes `init()`, `verify()`, `get()`, and `markAsProcessed()` for payment collection flows.
+- `src/Payout.php` — extends `Moneroo`; exposes `init()`, `verify()`, and `get()` for payout flows.
+- `src/Payment/Status.php` and `src/Payout/Status.php` — typed constants for transaction states (`INITIATED`, `PENDING`, `SUCCESS`, `FAILED`, `CANCELLED`).
+- `src/Traits/Request.php` — sends HTTP requests via Guzzle, decodes JSON responses, and maps HTTP status codes to typed exceptions.
+- `src/Exceptions/` — one exception class per HTTP error condition (400, 401, 403, 404, 406, 422, 503, 5xx).
+- `src/Configs/Config.php` — SDK version (`1.0.0`), default base URL (`https://api.moneroo.io/v1`), and request timeout (30 s).
+- `tests/` — PHPUnit test suite; run with random execution order and strict settings.
+
+## Conventions
+
+- Code style is enforced by `axazara/php-cs` (php-cs-fixer), configured in `.php-cs-fixer.dist.php`. Run `composer format` before every commit.
+- Static analysis uses PHPStan at level 4 (`composer analyse`). All new code must pass without errors.
+- Every change must be accompanied by new or updated tests, an updated `CHANGELOG.md`, and a version bump in `Config::VERSION`.
+- `devMode` flag: set to `true` in tests or local development to point the SDK at a custom `$baseUrl` instead of the production API.
+- `sendRequest()` is injectable with a `GuzzleHttpClient` instance, enabling mock-based unit tests without real HTTP calls.
+- KISS principle: keep classes small, single-purpose, and free of framework coupling.
+
 ## Git Conventions
 
 ### 1. Branch names
